@@ -8,62 +8,7 @@
 
 Read the flowchart top to bottom. A diamond is a yes or no question. A "No" follows the dashed red path to a fix, then back to retry the step.
 
-**Colors:** 🟦 HCM  🟩 Payroll  🟪 Costing + SLA  🟥 General Ledger
-
-```mermaid
-flowchart TD
-  n_s(["Start: a new employee earns a 1,000 salary"]):::term
-  n_hire["HR hires the employee<br/>PER_ALL_PEOPLE_F · PER_ALL_ASSIGNMENTS_M"]:::c1
-  n_sal["Salary and pay elements set up<br/>CMP_SALARY · PAY_ELEMENT_ENTRIES_F"]:::c1
-  n_run["Calculate Payroll<br/>PAY_PAYROLL_ACTIONS · PAY_RUN_RESULTS"]:::c2
-  n_derr{"Run completed without errors?"}:::d2
-  n_derr_b["Errors in the run<br/>fix the data, roll back, rerun"]:::fail
-  n_pre["Calculate Prepayments<br/>PAY_PRE_PAYMENTS · net pay 800"]:::c2
-  n_pp["Pay the employee<br/>payment generated · bank transfer"]:::c2
-  n_cost["Transfer to Subledger Accounting<br/>payroll costing results"]:::c4
-  n_ac1["Create Accounting: payroll run<br/>Dr Salary expense / Cr Payables"]:::c4
-  n_ac2["Create Accounting: payment<br/>Dr Wages payable / Cr Cash"]:::c4
-  n_fin{"Entries final?<br/>ENTRY = F"}:::d4
-  n_fin_b["Event in error<br/>fix account or period, rerun"]:::fail
-  n_xfer["Transfer Journal Entries to GL<br/>GL_INTERFACE"]:::c5
-  n_impj["Import Journals<br/>GL_JE_BATCHES · STATUS = U"]:::c5
-  n_post["Post Journals<br/>GL_BALANCES · STATUS = P"]:::c5
-  n_e(["End: payroll cost is in the books"]):::term
-  n_s --> n_hire
-  n_hire --> n_sal
-  n_sal --> n_run
-  n_run --> n_derr
-  n_derr -- Yes --> n_pre
-  n_pre --> n_pp
-  n_pp --> n_cost
-  n_cost --> n_ac1
-  n_ac1 --> n_ac2
-  n_ac2 --> n_fin
-  n_fin -- Yes --> n_xfer
-  n_xfer --> n_impj
-  n_impj --> n_post
-  n_post --> n_e
-  n_derr -. No .-> n_derr_b
-  n_derr_b -.-> n_run
-  n_fin -. No .-> n_fin_b
-  n_fin_b -.-> n_ac2
-
-  classDef term fill:#e9edf2,stroke:#33414f,stroke-width:1.5px,color:#121c27
-  classDef fail fill:#fdecea,stroke:#c0392b,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c1 fill:#e5f1f6,stroke:#1d6f8e,stroke-width:1.6px,color:#121c27
-  classDef d1 fill:#ffffff,stroke:#1d6f8e,stroke-width:1.6px,color:#121c27
-  classDef a1 fill:#e5f1f6,stroke:#1d6f8e,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c2 fill:#e3f3ea,stroke:#1f7a52,stroke-width:1.6px,color:#121c27
-  classDef d2 fill:#ffffff,stroke:#1f7a52,stroke-width:1.6px,color:#121c27
-  classDef a2 fill:#e3f3ea,stroke:#1f7a52,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c4 fill:#eee9fa,stroke:#6a4cc0,stroke-width:1.6px,color:#121c27
-  classDef d4 fill:#ffffff,stroke:#6a4cc0,stroke-width:1.6px,color:#121c27
-  classDef a4 fill:#eee9fa,stroke:#6a4cc0,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c5 fill:#fbe9ed,stroke:#b23a52,stroke-width:1.6px,color:#121c27
-  classDef d5 fill:#ffffff,stroke:#b23a52,stroke-width:1.6px,color:#121c27
-  classDef a5 fill:#fbe9ed,stroke:#b23a52,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  linkStyle 14,15,16,17 stroke:#c0392b,stroke-width:1.6px
-```
+![Hire to Retire: Payroll to GL flowchart](../images/hire-to-retire.svg)
 
 ## The steps in plain English
 

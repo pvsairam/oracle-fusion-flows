@@ -6,7 +6,7 @@ I made this to learn Oracle Fusion from the functional side, starting with Finan
 
 ## Pick a flow
 
-Click a name to open its page. The flowchart is drawn right on the page.
+Click a name to open its page. The flowchart is shown right at the top of the page.
 
 | Flow | What it follows | Modules involved |
 |---|---|---|
@@ -22,7 +22,7 @@ Click a name to open its page. The flowchart is drawn right on the page.
 Every page has the same parts, in the same order:
 
 1. **A short intro:** what the flow covers, the modules involved, and the example amount used.
-2. **A flowchart:** read it top to bottom. The color of each step shows which module does the work, and a color key sits above each flowchart. A diamond is a yes or no question, and a "No" follows the dashed red path to a fix and then a retry.
+2. **A flowchart:** read it top to bottom. Shaded bands show which module is doing the work. A diamond is a yes or no question, and a "No" follows the dashed red path to a fix and then a retry.
 3. **A steps table:** for each step, what happens, the Fusion job, the main tables, and what shows the step is done.
 4. **The accounting entries:** the debits and credits created along the way.
 5. **Where it usually gets stuck:** the common reasons a flow stops, and where to look.
@@ -41,6 +41,6 @@ Before relying on any name, check it in Oracle's *Tables and Views for Financial
 
 ## Adding a new flow
 
-Copy any page in `financials/` or `hcm/`, keep the same five parts, and add a row to the table above. Ideas for next:
+Copy any page in `financials/` or `hcm/`, keep the same five parts, and add a row to the table above. The flowchart pictures live in `images/`. Ideas for next:
 
 - Projects: project cost to billing

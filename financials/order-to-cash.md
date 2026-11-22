@@ -8,69 +8,7 @@
 
 Read the flowchart top to bottom. A diamond is a yes or no question. A "No" follows the dashed red path to a fix, then back to retry the step.
 
-**Colors:** 🟦 Order + Shipping  🟨 Billing  🟩 Receipts  🟥 General Ledger
-
-```mermaid
-flowchart TD
-  n_s(["Start: a customer orders goods worth 1,500"]):::term
-  n_ord["Sales order entered and submitted<br/>DOO_HEADERS_ALL · DOO_LINES_ALL"]:::c1
-  n_dord{"Order accepted?"}:::d1
-  n_dord_b["Order on hold<br/>fix and resubmit"]:::fail
-  n_ship["Pick, pack and ship<br/>WSH_NEW_DELIVERIES · ship confirmed"]:::c1
-  n_acs["Create Accounting: shipment cost<br/>Dr Cost of goods sold / Cr Inventory"]:::c1
-  n_ai["Import AutoInvoice<br/>RA_INTERFACE_LINES_ALL"]:::c3
-  n_dai{"AutoInvoice accepted?"}:::d3
-  n_dai_b["Rows rejected<br/>RA_INTERFACE_ERRORS_ALL"]:::fail
-  n_trx["Receivables invoice created<br/>RA_CUSTOMER_TRX_ALL · COMPLETE_FLAG = Y"]:::c3
-  n_aci["Create Accounting: invoice<br/>Dr Receivables 1,500 / Cr Revenue 1,500"]:::c3
-  n_rec["Customer pays: receipt created<br/>AR_CASH_RECEIPTS_ALL"]:::c2
-  n_app["Receipt applied to the invoice<br/>AR_RECEIVABLE_APPLICATIONS_ALL"]:::c2
-  n_dpd{"Invoice fully paid?<br/>AR_PAYMENT_SCHEDULES_ALL: CL"}:::d2
-  n_dpd_b["Part paid<br/>apply more cash or follow up"]:::fail
-  n_acr["Create Accounting: receipt<br/>Dr Cash 1,500 / Cr Receivables 1,500"]:::c2
-  n_xfer["Transfer Journal Entries to GL<br/>GL_INTERFACE"]:::c5
-  n_impj["Import Journals<br/>GL_JE_BATCHES · STATUS = U"]:::c5
-  n_post["Post Journals<br/>GL_BALANCES · STATUS = P"]:::c5
-  n_e(["End: the sale and the cash are in the books"]):::term
-  n_s --> n_ord
-  n_ord --> n_dord
-  n_dord -- Yes --> n_ship
-  n_ship --> n_acs
-  n_acs --> n_ai
-  n_ai --> n_dai
-  n_dai -- Yes --> n_trx
-  n_trx --> n_aci
-  n_aci --> n_rec
-  n_rec --> n_app
-  n_app --> n_dpd
-  n_dpd -- Yes --> n_acr
-  n_acr --> n_xfer
-  n_xfer --> n_impj
-  n_impj --> n_post
-  n_post --> n_e
-  n_dord -. No .-> n_dord_b
-  n_dord_b -.-> n_ord
-  n_dai -. No .-> n_dai_b
-  n_dai_b -.-> n_ai
-  n_dpd -. No .-> n_dpd_b
-  n_dpd_b -.-> n_app
-
-  classDef term fill:#e9edf2,stroke:#33414f,stroke-width:1.5px,color:#121c27
-  classDef fail fill:#fdecea,stroke:#c0392b,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c1 fill:#e5f1f6,stroke:#1d6f8e,stroke-width:1.6px,color:#121c27
-  classDef d1 fill:#ffffff,stroke:#1d6f8e,stroke-width:1.6px,color:#121c27
-  classDef a1 fill:#e5f1f6,stroke:#1d6f8e,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c2 fill:#e3f3ea,stroke:#1f7a52,stroke-width:1.6px,color:#121c27
-  classDef d2 fill:#ffffff,stroke:#1f7a52,stroke-width:1.6px,color:#121c27
-  classDef a2 fill:#e3f3ea,stroke:#1f7a52,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c3 fill:#fbf0dc,stroke:#a8660b,stroke-width:1.6px,color:#121c27
-  classDef d3 fill:#ffffff,stroke:#a8660b,stroke-width:1.6px,color:#121c27
-  classDef a3 fill:#fbf0dc,stroke:#a8660b,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  classDef c5 fill:#fbe9ed,stroke:#b23a52,stroke-width:1.6px,color:#121c27
-  classDef d5 fill:#ffffff,stroke:#b23a52,stroke-width:1.6px,color:#121c27
-  classDef a5 fill:#fbe9ed,stroke:#b23a52,stroke-width:1.5px,stroke-dasharray:5 4,color:#121c27
-  linkStyle 16,17,18,19,20,21 stroke:#c0392b,stroke-width:1.6px
-```
+![Order to Cash flowchart](../images/order-to-cash.svg)
 
 ## The steps in plain English
 

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1548" width="900" height="1548" role="img" aria-label="Fixed Assets to GL flowchart">
+<title>Fixed Assets to GL</title><desc>Buying an asset and depreciating it, through to a posted GL journal. Read top to bottom.</desc>
+<style>
+.bg{fill:#ffffff}
+.p1{--c:#1d6f8e;--cb:#e5f1f6}.p2{--c:#1f7a52;--cb:#e3f3ea}.p3{--c:#a8660b;--cb:#fbf0dc}.p4{--c:#6a4cc0;--cb:#eee9fa}.p5{--c:#b23a52;--cb:#fbe9ed}
+.band{fill:var(--cb);fill-opacity:.4;stroke:var(--c);stroke-opacity:.55;stroke-width:1.2;stroke-dasharray:7 5}
+.proc .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.7}
+.dec .bx{fill:#ffffff;stroke:var(--c);stroke-width:1.7}
+.term .bx{fill:#e9edf2;stroke:#33414f;stroke-width:1.7}
+.fail .bx{fill:#fdecea;stroke:#c0392b;stroke-width:1.5;stroke-dasharray:5 4}
+.alt .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.5;stroke-dasharray:5 4}
+.ln{fill:none;stroke:#55646f;stroke-width:1.8}
+.lnf{fill:none;stroke:#c0392b;stroke-width:1.6;stroke-dasharray:6 4}
+.mk{fill:#55646f}.mkf{fill:#c0392b}
+.t-h{font:700 22px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-hs{font:400 12.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-t{font:600 14px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-s{font:500 11px Consolas,'Courier New',monospace;fill:#5d6b79}
+.t-yn{font:600 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+.t-yn.no{fill:#c0392b}
+.t-ph{font:700 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:var(--c);letter-spacing:.06em}
+.t-phs{font:500 11px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-l{font:500 11.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mk" points="0,0 10,5 0,10"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mkf" points="0,0 10,5 0,10"/></marker></defs>
+<rect class="bg" width="900" height="1548"/>
+<text class="t-h" x="24" y="40">Fixed Assets to GL</text>
+<text class="t-hs" x="24" y="62">Buying an asset and depreciating it, through to a posted GL journal. Read top to bottom.</text>
+<g class="p3"><rect class="band" x="8" y="82" width="884" height="274" rx="14"/><text class="t-ph" x="24" y="106">PAYABLES</text><text class="t-phs" x="24" y="122">buy the asset</text></g>
+<g class="p2"><rect class="band" x="8" y="364" width="884" height="414" rx="14"/><text class="t-ph" x="24" y="388">FIXED ASSETS</text><text class="t-phs" x="24" y="404">create the asset</text></g>
+<g class="p4"><rect class="band" x="8" y="786" width="884" height="316" rx="14"/><text class="t-ph" x="24" y="810">DEPRECIATION</text><text class="t-phs" x="24" y="826">every month</text></g>
+<g class="p5"><rect class="band" x="8" y="1110" width="884" height="372" rx="14"/><text class="t-ph" x="24" y="1134">GENERAL LEDGER</text><text class="t-phs" x="24" y="1150">journals and balances</text></g>
+<line class="ln" x1="410" y1="146" x2="410" y2="180" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="244" x2="410" y2="278" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="342" x2="410" y2="376" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="440" x2="410" y2="474" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="568" x2="410" y2="602" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="583">Yes</text>
+<line class="ln" x1="410" y1="666" x2="410" y2="700" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="764" x2="410" y2="798" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="862" x2="410" y2="896" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="960" x2="410" y2="994" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1088" x2="410" y2="1122" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1103">Yes</text>
+<line class="ln" x1="410" y1="1186" x2="410" y2="1220" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1284" x2="410" y2="1318" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1382" x2="410" y2="1416" marker-end="url(#ar)"/>
+<line class="lnf" x1="560" y1="522.0" x2="638" y2="522.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="514.0" text-anchor="middle">No</text>
+<g class="fail p2"><rect class="bx" x="640" y="491.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="517.0" text-anchor="middle">Mass addition on hold</text><text class="t-s" x="758.0" y="537.0" text-anchor="middle">add category and location</text></g>
+<path class="lnf" d="M 758.0 491.0 V 409.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="1042.0" x2="638" y2="1042.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="1034.0" text-anchor="middle">No</text>
+<g class="fail p4"><rect class="bx" x="640" y="1011.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="1037.0" text-anchor="middle">Event in error</text><text class="t-s" x="758.0" y="1057.0" text-anchor="middle">fix account or period, rerun</text></g>
+<path class="lnf" d="M 758.0 1011.0 V 929.0 H 562.0" marker-end="url(#arf)"/>
+<g class="term"><rect class="bx" x="260.0" y="96" width="300" height="50" rx="25"/><text class="t-t" x="410" y="127" text-anchor="middle">Start: the company buys equipment worth 1,200</text></g>
+<g class="p3 proc"><rect class="bx" x="260.0" y="182" width="300" height="62" rx="8"/><text class="t-t" x="410" y="208" text-anchor="middle">Invoice line marked as an asset</text><text class="t-s" x="410" y="228" text-anchor="middle">AP_INVOICE_LINES_ALL</text></g>
+<g class="p3 proc"><rect class="bx" x="260.0" y="280" width="300" height="62" rx="8"/><text class="t-t" x="410" y="306" text-anchor="middle">Validate and account the invoice</text><text class="t-s" x="410" y="326" text-anchor="middle">MATCH_STATUS_FLAG = A · ENTRY = F</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="378" width="300" height="62" rx="8"/><text class="t-t" x="410" y="404" text-anchor="middle">Create Mass Additions</text><text class="t-s" x="410" y="424" text-anchor="middle">FA_MASS_ADDITIONS · NEW</text></g>
+<g class="p2 dec"><polygon class="bx" points="410,476 560,522.0 410,568 260,522.0"/><text class="t-t" x="410" y="527.0" text-anchor="middle">Asset details complete?</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="604" width="300" height="62" rx="8"/><text class="t-t" x="410" y="630" text-anchor="middle">Post Mass Additions</text><text class="t-s" x="410" y="650" text-anchor="middle">FA_ADDITIONS_B · POSTED</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="702" width="300" height="62" rx="8"/><text class="t-t" x="410" y="728" text-anchor="middle">Create Accounting: addition</text><text class="t-s" x="410" y="748" text-anchor="middle">Dr Asset cost / Cr Asset clearing</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="800" width="300" height="62" rx="8"/><text class="t-t" x="410" y="826" text-anchor="middle">Calculate Depreciation</text><text class="t-s" x="410" y="846" text-anchor="middle">FA_DEPRN_SUMMARY · FA_DEPRN_DETAIL</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="898" width="300" height="62" rx="8"/><text class="t-t" x="410" y="924" text-anchor="middle">Create Accounting: depreciation</text><text class="t-s" x="410" y="944" text-anchor="middle">Dr Depreciation / Cr Accumulated depr.</text></g>
+<g class="p4 dec"><polygon class="bx" points="410,996 560,1042.0 410,1088 260,1042.0"/><text class="t-t" x="410" y="1040.0" text-anchor="middle">Entries final?</text><text class="t-s" x="410" y="1058.0" text-anchor="middle">ENTRY = F</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1124" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1150" text-anchor="middle">Transfer Journal Entries to GL</text><text class="t-s" x="410" y="1170" text-anchor="middle">GL_INTERFACE</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1222" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1248" text-anchor="middle">Import Journals</text><text class="t-s" x="410" y="1268" text-anchor="middle">GL_JE_BATCHES · STATUS = U</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1320" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1346" text-anchor="middle">Post Journals</text><text class="t-s" x="410" y="1366" text-anchor="middle">GL_BALANCES · STATUS = P</text></g>
+<g class="term"><rect class="bx" x="260.0" y="1418" width="300" height="50" rx="25"/><text class="t-t" x="410" y="1449" text-anchor="middle">End: asset and depreciation are in the books</text></g>
+<rect x="24" y="1496" width="36" height="18" rx="9" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="68" y="1509">Start or end</text>
+<rect x="170" y="1496" width="36" height="18" rx="4" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="214" y="1509">Step</text>
+<polygon points="278,1495 296,1505 278,1515 260,1505" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="304" y="1509">Decision</text>
+<line x1="392" y1="1505" x2="428" y2="1505" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="5 3"/><text class="t-l" x="436" y="1509">Failure, fix, then retry</text>
+<text class="t-l" x="600" y="1509">Grey text: the table or status that proves the step</text>
+</svg>

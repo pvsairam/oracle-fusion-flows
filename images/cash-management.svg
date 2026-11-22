@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1480" width="900" height="1480" role="img" aria-label="Cash Management flowchart">
+<title>Cash Management</title><desc>A bank statement matched to company records, through to a posted GL journal. Read top to bottom.</desc>
+<style>
+.bg{fill:#ffffff}
+.p1{--c:#1d6f8e;--cb:#e5f1f6}.p2{--c:#1f7a52;--cb:#e3f3ea}.p3{--c:#a8660b;--cb:#fbf0dc}.p4{--c:#6a4cc0;--cb:#eee9fa}.p5{--c:#b23a52;--cb:#fbe9ed}
+.band{fill:var(--cb);fill-opacity:.4;stroke:var(--c);stroke-opacity:.55;stroke-width:1.2;stroke-dasharray:7 5}
+.proc .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.7}
+.dec .bx{fill:#ffffff;stroke:var(--c);stroke-width:1.7}
+.term .bx{fill:#e9edf2;stroke:#33414f;stroke-width:1.7}
+.fail .bx{fill:#fdecea;stroke:#c0392b;stroke-width:1.5;stroke-dasharray:5 4}
+.alt .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.5;stroke-dasharray:5 4}
+.ln{fill:none;stroke:#55646f;stroke-width:1.8}
+.lnf{fill:none;stroke:#c0392b;stroke-width:1.6;stroke-dasharray:6 4}
+.mk{fill:#55646f}.mkf{fill:#c0392b}
+.t-h{font:700 22px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-hs{font:400 12.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-t{font:600 14px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-s{font:500 11px Consolas,'Courier New',monospace;fill:#5d6b79}
+.t-yn{font:600 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+.t-yn.no{fill:#c0392b}
+.t-ph{font:700 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:var(--c);letter-spacing:.06em}
+.t-phs{font:500 11px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-l{font:500 11.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mk" points="0,0 10,5 0,10"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mkf" points="0,0 10,5 0,10"/></marker></defs>
+<rect class="bg" width="900" height="1480"/>
+<text class="t-h" x="24" y="40">Cash Management</text>
+<text class="t-hs" x="24" y="62">A bank statement matched to company records, through to a posted GL journal. Read top to bottom.</text>
+<g class="p1"><rect class="band" x="8" y="82" width="884" height="402" rx="14"/><text class="t-ph" x="24" y="106">STATEMENT</text><text class="t-phs" x="24" y="122">load and import</text></g>
+<g class="p2"><rect class="band" x="8" y="492" width="884" height="542" rx="14"/><text class="t-ph" x="24" y="516">RECONCILIATION</text><text class="t-phs" x="24" y="532">match and account</text></g>
+<g class="p5"><rect class="band" x="8" y="1042" width="884" height="372" rx="14"/><text class="t-ph" x="24" y="1066">GENERAL LEDGER</text><text class="t-phs" x="24" y="1082">journals and balances</text></g>
+<line class="ln" x1="410" y1="146" x2="410" y2="180" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="244" x2="410" y2="278" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="342" x2="410" y2="376" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="470" x2="410" y2="504" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="485">Yes</text>
+<line class="ln" x1="410" y1="568" x2="410" y2="602" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="696" x2="410" y2="730" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="711">Yes</text>
+<line class="ln" x1="410" y1="794" x2="410" y2="828" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="892" x2="410" y2="926" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1020" x2="410" y2="1054" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1035">Yes</text>
+<line class="ln" x1="410" y1="1118" x2="410" y2="1152" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1216" x2="410" y2="1250" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1314" x2="410" y2="1348" marker-end="url(#ar)"/>
+<line class="lnf" x1="560" y1="424.0" x2="638" y2="424.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="416.0" text-anchor="middle">No</text>
+<g class="fail p1"><rect class="bx" x="640" y="393.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="419.0" text-anchor="middle">Statement rejected</text><text class="t-s" x="758.0" y="439.0" text-anchor="middle">fix file or bank account, reload</text></g>
+<path class="lnf" d="M 758.0 393.0 V 213.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="650.0" x2="638" y2="650.0" marker-end="url(#arf)"/>
+<text class="t-yn" x="600.0" y="642.0" text-anchor="middle">No</text>
+<g class="alt p2"><rect class="bx" x="640" y="619.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="645.0" text-anchor="middle">Unmatched lines</text><text class="t-s" x="758.0" y="665.0" text-anchor="middle">reconcile by hand, or add a fee</text></g>
+<path class="ln" d="M 758.0 681.0 V 763.0 H 562.0" marker-end="url(#ar)"/>
+<line class="lnf" x1="560" y1="974.0" x2="638" y2="974.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="966.0" text-anchor="middle">No</text>
+<g class="fail p2"><rect class="bx" x="640" y="943.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="969.0" text-anchor="middle">Event in error</text><text class="t-s" x="758.0" y="989.0" text-anchor="middle">fix account or period, rerun</text></g>
+<path class="lnf" d="M 758.0 943.0 V 861.0 H 562.0" marker-end="url(#arf)"/>
+<g class="term"><rect class="bx" x="260.0" y="96" width="300" height="50" rx="25"/><text class="t-t" x="410" y="127" text-anchor="middle">Start: statement with a payment and a fee</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="182" width="300" height="62" rx="8"/><text class="t-t" x="410" y="208" text-anchor="middle">Bank statement file loaded</text><text class="t-s" x="410" y="228" text-anchor="middle">CE_STATEMENT_HEADERS_INT</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="280" width="300" height="62" rx="8"/><text class="t-t" x="410" y="306" text-anchor="middle">Import Bank Statements</text><text class="t-s" x="410" y="326" text-anchor="middle">CE_STATEMENT_LINES · unreconciled</text></g>
+<g class="p1 dec"><polygon class="bx" points="410,378 560,424.0 410,470 260,424.0"/><text class="t-t" x="410" y="429.0" text-anchor="middle">Import accepted?</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="506" width="300" height="62" rx="8"/><text class="t-t" x="410" y="532" text-anchor="middle">Autoreconcile Bank Statements</text><text class="t-s" x="410" y="552" text-anchor="middle">CE_STATEMENT_LINES</text></g>
+<g class="p2 dec"><polygon class="bx" points="410,604 560,650.0 410,696 260,650.0"/><text class="t-t" x="410" y="655.0" text-anchor="middle">Every line matched?</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="732" width="300" height="62" rx="8"/><text class="t-t" x="410" y="758" text-anchor="middle">Payments, receipts marked cleared</text><text class="t-s" x="410" y="778" text-anchor="middle">AP_CHECKS_ALL · AR_CASH_RECEIPTS_ALL</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="830" width="300" height="62" rx="8"/><text class="t-t" x="410" y="856" text-anchor="middle">Create Accounting: reconciliation</text><text class="t-s" x="410" y="876" text-anchor="middle">Dr Bank charges / Cr Cash (fee)</text></g>
+<g class="p2 dec"><polygon class="bx" points="410,928 560,974.0 410,1020 260,974.0"/><text class="t-t" x="410" y="972.0" text-anchor="middle">Entries final?</text><text class="t-s" x="410" y="990.0" text-anchor="middle">ENTRY = F</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1056" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1082" text-anchor="middle">Transfer Journal Entries to GL</text><text class="t-s" x="410" y="1102" text-anchor="middle">GL_INTERFACE</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1154" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1180" text-anchor="middle">Import Journals</text><text class="t-s" x="410" y="1200" text-anchor="middle">GL_JE_BATCHES · STATUS = U</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1252" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1278" text-anchor="middle">Post Journals</text><text class="t-s" x="410" y="1298" text-anchor="middle">GL_BALANCES · STATUS = P</text></g>
+<g class="term"><rect class="bx" x="260.0" y="1350" width="300" height="50" rx="25"/><text class="t-t" x="410" y="1381" text-anchor="middle">End: bank balance agrees with the books</text></g>
+<rect x="24" y="1428" width="36" height="18" rx="9" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="68" y="1441">Start or end</text>
+<rect x="170" y="1428" width="36" height="18" rx="4" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="214" y="1441">Step</text>
+<polygon points="278,1427 296,1437 278,1447 260,1437" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="304" y="1441">Decision</text>
+<line x1="392" y1="1437" x2="428" y2="1437" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="5 3"/><text class="t-l" x="436" y="1441">Failure, fix, then retry</text>
+<text class="t-l" x="600" y="1441">Grey text: the table or status that proves the step</text>
+</svg>
