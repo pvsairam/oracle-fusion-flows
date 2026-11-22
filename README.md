@@ -14,6 +14,7 @@ Click a name to open it. The flowchart is drawn right on the page.
 | [Procure to Pay](financials/procure-to-pay.md) | The company orders goods, receives them and pays the supplier | Purchasing, Receiving, Payables, Payments, SLA, GL |
 | [Order to Cash](financials/order-to-cash.md) | A customer orders, the company ships, bills and collects | Order Management, Shipping, Receivables, SLA, GL |
 | [Fixed Assets to GL](financials/fixed-assets-to-gl.md) | The company buys an asset and depreciates it | Payables, Fixed Assets, SLA, GL |
+| [Cash Management](financials/cash-management.md) | A bank statement is matched to the company's records | Cash Management, Payables, Receivables, SLA, GL |
 
 ## How to read a flow page
 
@@ -41,6 +42,5 @@ Before relying on any name, check it in Oracle's *Tables and Views for Financial
 
 Copy any page in `financials/`, keep the same five parts, and add a row to the table above. Ideas for next:
 
-- Cash Management: bank statement to reconciliation
 - Hire to Retire: payroll costing to GL
 - Projects: project cost to billing
