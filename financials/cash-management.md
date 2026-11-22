@@ -6,28 +6,11 @@
 
 **Example used:** a bank statement with a 100 payment to a supplier and a 5 bank fee.
 
-Read the flowchart top to bottom. A diamond is a yes or no question. A "No" sends you to a fix, then back to retry the step.
+Read the flowchart top to bottom. A diamond is a yes or no question. A "No" follows the dashed red path to a fix, then back to retry the step.
 
-```mermaid
-flowchart TD
-    A(["Start: bank statement arrives with a 100 payment and a 5 fee"]) --> B["Bank statement file loaded"]
-    B --> C["Import Bank Statements"]
-    C --> D{"Import accepted?"}
-    D -- No --> D1["Statement rejected: fix the file or bank account and reload"] --> B
-    D -- Yes --> E["Statement lines created, all unreconciled"]
-    E --> F["Autoreconcile Bank Statements"]
-    F --> G{"Every line matched?"}
-    G -- No --> G1["Unmatched lines: reconcile by hand or create a bank transaction such as a fee"] --> H
-    G -- Yes --> H["Statement fully reconciled"]
-    H --> I["Payment and receipt statuses change to cleared"]
-    I --> J["Create Accounting: reconciliation"]
-    J --> K{"Entries final?"}
-    K -- No --> K1["Event in error: fix and rerun"] --> J
-    K -- Yes --> L["Transfer Journal Entries to GL"]
-    L --> M["Import Journals"]
-    M --> N["Post Journals"]
-    N --> O(["End: bank balance agrees with the books"])
-```
+![Cash Management flowchart](cash-management.svg)
+
+[Open the flowchart full size](cash-management.svg)
 
 ## The steps in plain English
 

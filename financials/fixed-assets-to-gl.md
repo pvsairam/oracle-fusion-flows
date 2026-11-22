@@ -6,27 +6,11 @@
 
 **Example used:** the company buys equipment worth 1,200.
 
-Read the flowchart top to bottom. A diamond is a yes or no question. A "No" sends you to a fix, then back to retry the step.
+Read the flowchart top to bottom. A diamond is a yes or no question. A "No" follows the dashed red path to a fix, then back to retry the step.
 
-```mermaid
-flowchart TD
-    A(["Start: the company buys equipment worth 1,200"]) --> B["Supplier invoice entered with the line marked as an asset"]
-    B --> C["Invoice validated and accounted in Payables"]
-    C --> D["Create Mass Additions"]
-    D --> E["Mass addition waits for review"]
-    E --> F{"Asset details complete?"}
-    F -- No --> F1["Mass addition on hold: add category and location"] --> E
-    F -- Yes --> G["Post Mass Additions: asset is created"]
-    G --> H["Create Accounting: asset addition"]
-    H --> I["Each month: Calculate Depreciation"]
-    I --> J["Create Accounting: depreciation"]
-    J --> K{"Entries final?"}
-    K -- No --> K1["Event in error: fix and rerun"] --> J
-    K -- Yes --> L["Transfer Journal Entries to GL"]
-    L --> M["Import Journals"]
-    M --> N["Post Journals"]
-    N --> O(["End: asset and depreciation are in the books"])
-```
+![Fixed Assets to GL flowchart](fixed-assets-to-gl.svg)
+
+[Open the flowchart full size](fixed-assets-to-gl.svg)
 
 ## The steps in plain English
 

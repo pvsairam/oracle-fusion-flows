@@ -6,22 +6,22 @@ I made this to learn Fusion Financials from the functional side. Each page follo
 
 ## Pick a flow
 
-Click a name to open it. The flowchart is drawn right on the page.
+Click a name to open the page with its flowchart, or click Open to see just the flowchart image.
 
-| Flow | What it follows | Modules involved |
-|---|---|---|
-| [Expense to GL](financials/expense-to-gl.md) | An employee claims an expense and gets paid | HCM, Expenses, Payables, Payments, SLA, GL |
-| [Procure to Pay](financials/procure-to-pay.md) | The company orders goods, receives them and pays the supplier | Purchasing, Receiving, Payables, Payments, SLA, GL |
-| [Order to Cash](financials/order-to-cash.md) | A customer orders, the company ships, bills and collects | Order Management, Shipping, Receivables, SLA, GL |
-| [Fixed Assets to GL](financials/fixed-assets-to-gl.md) | The company buys an asset and depreciates it | Payables, Fixed Assets, SLA, GL |
-| [Cash Management](financials/cash-management.md) | A bank statement is matched to the company's records | Cash Management, Payables, Receivables, SLA, GL |
+| Flow | What it follows | Modules involved | Flowchart |
+|---|---|---|---|
+| [Expense to GL](financials/expense-to-gl.md) | An employee claims an expense and gets paid | HCM, Expenses, Payables, Payments, SLA, GL | [Open](financials/expense-to-gl.svg) |
+| [Procure to Pay](financials/procure-to-pay.md) | The company orders goods, receives them and pays the supplier | Purchasing, Receiving, Payables, Payments, SLA, GL | [Open](financials/procure-to-pay.svg) |
+| [Order to Cash](financials/order-to-cash.md) | A customer orders, the company ships, bills and collects | Order Management, Shipping, Receivables, SLA, GL | [Open](financials/order-to-cash.svg) |
+| [Fixed Assets to GL](financials/fixed-assets-to-gl.md) | The company buys an asset and depreciates it | Payables, Fixed Assets, SLA, GL | [Open](financials/fixed-assets-to-gl.svg) |
+| [Cash Management](financials/cash-management.md) | A bank statement is matched to the company's records | Cash Management, Payables, Receivables, SLA, GL | [Open](financials/cash-management.svg) |
 
 ## How to read a flow page
 
 Every page has the same parts, in the same order:
 
 1. **A short intro:** what the flow covers, the modules involved, and the example amount used.
-2. **A flowchart:** read it top to bottom. A diamond is a yes or no question, and a "No" leads to a fix and then a retry.
+2. **A flowchart:** read it top to bottom. Shaded bands show which module is doing the work. A diamond is a yes or no question, and a "No" follows the dashed red path to a fix and then a retry.
 3. **A steps table:** for each step, what happens, the Fusion job, the main tables, and what shows the step is done.
 4. **The accounting entries:** the debits and credits created along the way.
 5. **Where it usually gets stuck:** the common reasons a flow stops, and where to look.

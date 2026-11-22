@@ -6,38 +6,11 @@
 
 **Example used:** an employee claims a 100 hotel bill.
 
-Read the flowchart top to bottom. A diamond is a yes or no question. A "No" sends you to a fix, then back to retry the step.
+Read the flowchart top to bottom. A diamond is a yes or no question. A "No" follows the dashed red path to a fix, then back to retry the step.
 
-```mermaid
-flowchart TD
-    A(["Start: employee has a 100 expense"]) --> B["HR hires the employee"]
-    B --> C["User account and roles created"]
-    C --> D["Employee enters the expense report"]
-    D --> E["Employee submits for approval"]
-    E --> F{"Manager approves?"}
-    F -- No --> F1["Returned to employee"] --> D
-    F -- Yes --> G{"Audit needed?"}
-    G -- Yes --> G1["Auditor reviews"] --> H
-    G -- No --> H["Report is approved"]
-    H --> I["Export Expense Reports"]
-    I --> J{"Import accepted?"}
-    J -- No --> J1["Rows rejected: fix and rerun"] --> I
-    J -- Yes --> K["AP invoice created"]
-    K --> L["Validate Payables Invoice"]
-    L --> M{"No holds?"}
-    M -- No --> M1["Hold placed: fix and revalidate"] --> L
-    M -- Yes --> N["Create Accounting: invoice"]
-    N --> O["Payment Process Request"]
-    O --> P["Create Accounting: payment"]
-    P --> Q{"Entries final?"}
-    Q -- No --> Q1["Event in error: fix and rerun"] --> P
-    Q -- Yes --> R["Transfer Journal Entries to GL"]
-    R --> S["Import Journals"]
-    S --> T{"Period open and journal approved?"}
-    T -- No --> T1["Journal waits: retry"] --> S
-    T -- Yes --> U["Post Journals"]
-    U --> V(["End: the 100 is in the books"])
-```
+![Expense to GL flowchart](expense-to-gl.svg)
+
+[Open the flowchart full size](expense-to-gl.svg)
 
 ## The steps in plain English
 

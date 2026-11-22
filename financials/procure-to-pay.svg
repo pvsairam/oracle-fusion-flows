@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 2098" width="900" height="2098" role="img" aria-label="Procure to Pay flowchart">
+<title>Procure to Pay</title><desc>Buying goods from a supplier, from request to a posted GL journal. Read top to bottom.</desc>
+<style>
+.bg{fill:#ffffff}
+.p1{--c:#1d6f8e;--cb:#e5f1f6}.p2{--c:#1f7a52;--cb:#e3f3ea}.p3{--c:#a8660b;--cb:#fbf0dc}.p4{--c:#6a4cc0;--cb:#eee9fa}.p5{--c:#b23a52;--cb:#fbe9ed}
+.band{fill:var(--cb);fill-opacity:.4;stroke:var(--c);stroke-opacity:.55;stroke-width:1.2;stroke-dasharray:7 5}
+.proc .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.7}
+.dec .bx{fill:#ffffff;stroke:var(--c);stroke-width:1.7}
+.term .bx{fill:#e9edf2;stroke:#33414f;stroke-width:1.7}
+.fail .bx{fill:#fdecea;stroke:#c0392b;stroke-width:1.5;stroke-dasharray:5 4}
+.alt .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.5;stroke-dasharray:5 4}
+.ln{fill:none;stroke:#55646f;stroke-width:1.8}
+.lnf{fill:none;stroke:#c0392b;stroke-width:1.6;stroke-dasharray:6 4}
+.mk{fill:#55646f}.mkf{fill:#c0392b}
+.t-h{font:700 22px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-hs{font:400 12.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-t{font:600 14px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-s{font:500 11px Consolas,'Courier New',monospace;fill:#5d6b79}
+.t-yn{font:600 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+.t-yn.no{fill:#c0392b}
+.t-ph{font:700 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:var(--c);letter-spacing:.06em}
+.t-phs{font:500 11px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-l{font:500 11.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mk" points="0,0 10,5 0,10"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mkf" points="0,0 10,5 0,10"/></marker></defs>
+<rect class="bg" width="900" height="2098"/>
+<text class="t-h" x="24" y="40">Procure to Pay</text>
+<text class="t-hs" x="24" y="62">Buying goods from a supplier, from request to a posted GL journal. Read top to bottom.</text>
+<g class="p1"><rect class="band" x="8" y="82" width="884" height="628" rx="14"/><text class="t-ph" x="24" y="106">PURCHASING</text><text class="t-phs" x="24" y="122">request and order</text></g>
+<g class="p2"><rect class="band" x="8" y="718" width="884" height="188" rx="14"/><text class="t-ph" x="24" y="742">RECEIVING</text><text class="t-phs" x="24" y="758">goods arrive</text></g>
+<g class="p3"><rect class="band" x="8" y="914" width="884" height="316" rx="14"/><text class="t-ph" x="24" y="938">PAYABLES</text><text class="t-phs" x="24" y="954">invoice and match</text></g>
+<g class="p4"><rect class="band" x="8" y="1238" width="884" height="414" rx="14"/><text class="t-ph" x="24" y="1262">PAYMENTS + SLA</text><text class="t-phs" x="24" y="1278">pay and account</text></g>
+<g class="p5"><rect class="band" x="8" y="1660" width="884" height="372" rx="14"/><text class="t-ph" x="24" y="1684">GENERAL LEDGER</text><text class="t-phs" x="24" y="1700">journals and balances</text></g>
+<line class="ln" x1="410" y1="146" x2="410" y2="180" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="244" x2="410" y2="278" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="372" x2="410" y2="406" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="387">Yes</text>
+<line class="ln" x1="410" y1="470" x2="410" y2="504" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="598" x2="410" y2="632" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="613">Yes</text>
+<line class="ln" x1="410" y1="696" x2="410" y2="730" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="794" x2="410" y2="828" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="892" x2="410" y2="926" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="990" x2="410" y2="1024" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1088" x2="410" y2="1122" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1216" x2="410" y2="1250" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1231">Yes</text>
+<line class="ln" x1="410" y1="1314" x2="410" y2="1348" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1412" x2="410" y2="1446" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1510" x2="410" y2="1544" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1638" x2="410" y2="1672" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1653">Yes</text>
+<line class="ln" x1="410" y1="1736" x2="410" y2="1770" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1834" x2="410" y2="1868" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1932" x2="410" y2="1966" marker-end="url(#ar)"/>
+<line class="lnf" x1="560" y1="326.0" x2="638" y2="326.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="318.0" text-anchor="middle">No</text>
+<g class="fail p1"><rect class="bx" x="640" y="295.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="321.0" text-anchor="middle">Returned to requester</text><text class="t-s" x="758.0" y="341.0" text-anchor="middle">edit and resubmit</text></g>
+<path class="lnf" d="M 758.0 295.0 V 213.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="552.0" x2="638" y2="552.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="544.0" text-anchor="middle">No</text>
+<g class="fail p1"><rect class="bx" x="640" y="521.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="547.0" text-anchor="middle">Returned to buyer</text><text class="t-s" x="758.0" y="567.0" text-anchor="middle">fix and resubmit</text></g>
+<path class="lnf" d="M 758.0 521.0 V 439.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="1170.0" x2="638" y2="1170.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="1162.0" text-anchor="middle">No</text>
+<g class="fail p3"><rect class="bx" x="640" y="1139.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="1165.0" text-anchor="middle">Hold placed</text><text class="t-s" x="758.0" y="1185.0" text-anchor="middle">AP_HOLDS_ALL: fix price or qty</text></g>
+<path class="lnf" d="M 758.0 1139.0 V 1057.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="1592.0" x2="638" y2="1592.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="1584.0" text-anchor="middle">No</text>
+<g class="fail p4"><rect class="bx" x="640" y="1561.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="1587.0" text-anchor="middle">Event in error</text><text class="t-s" x="758.0" y="1607.0" text-anchor="middle">fix account or period, rerun</text></g>
+<path class="lnf" d="M 758.0 1561.0 V 1479.0 H 562.0" marker-end="url(#arf)"/>
+<g class="term"><rect class="bx" x="260.0" y="96" width="300" height="50" rx="25"/><text class="t-t" x="410" y="127" text-anchor="middle">Start: the company needs goods worth 1,000</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="182" width="300" height="62" rx="8"/><text class="t-t" x="410" y="208" text-anchor="middle">Create purchase requisition</text><text class="t-s" x="410" y="228" text-anchor="middle">POR_REQUISITION_HEADERS_ALL</text></g>
+<g class="p1 dec"><polygon class="bx" points="410,280 560,326.0 410,372 260,326.0"/><text class="t-t" x="410" y="331.0" text-anchor="middle">Requisition approved?</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="408" width="300" height="62" rx="8"/><text class="t-t" x="410" y="434" text-anchor="middle">Process into a purchase order</text><text class="t-s" x="410" y="454" text-anchor="middle">PO_HEADERS_ALL · PO_LINES_ALL</text></g>
+<g class="p1 dec"><polygon class="bx" points="410,506 560,552.0 410,598 260,552.0"/><text class="t-t" x="410" y="557.0" text-anchor="middle">Purchase order approved?</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="634" width="300" height="62" rx="8"/><text class="t-t" x="410" y="660" text-anchor="middle">Purchase order sent to supplier</text><text class="t-s" x="410" y="680" text-anchor="middle">PO_HEADERS_ALL · STATUS = OPEN</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="732" width="300" height="62" rx="8"/><text class="t-t" x="410" y="758" text-anchor="middle">Goods received</text><text class="t-s" x="410" y="778" text-anchor="middle">RCV_SHIPMENT_HEADERS · RCV_TRANSACTIONS</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="830" width="300" height="62" rx="8"/><text class="t-t" x="410" y="856" text-anchor="middle">Create Accounting: receipt</text><text class="t-s" x="410" y="876" text-anchor="middle">Dr Inventory / Cr Receipt accrual</text></g>
+<g class="p3 proc"><rect class="bx" x="260.0" y="928" width="300" height="62" rx="8"/><text class="t-t" x="410" y="954" text-anchor="middle">Invoice entered, matched to PO</text><text class="t-s" x="410" y="974" text-anchor="middle">AP_INVOICES_ALL · AP_INVOICE_LINES_ALL</text></g>
+<g class="p3 proc"><rect class="bx" x="260.0" y="1026" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1052" text-anchor="middle">Validate Payables Invoice</text><text class="t-s" x="410" y="1072" text-anchor="middle">MATCH_STATUS_FLAG</text></g>
+<g class="p3 dec"><polygon class="bx" points="410,1124 560,1170.0 410,1216 260,1170.0"/><text class="t-t" x="410" y="1175.0" text-anchor="middle">Match ok, no holds?</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="1252" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1278" text-anchor="middle">Create Accounting: invoice</text><text class="t-s" x="410" y="1298" text-anchor="middle">Dr Receipt accrual / Cr Liability</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="1350" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1376" text-anchor="middle">Payment Process Request</text><text class="t-s" x="410" y="1396" text-anchor="middle">IBY_PAYMENTS_ALL · ISSUED</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="1448" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1474" text-anchor="middle">Create Accounting: payment</text><text class="t-s" x="410" y="1494" text-anchor="middle">Dr Liability / Cr Cash</text></g>
+<g class="p4 dec"><polygon class="bx" points="410,1546 560,1592.0 410,1638 260,1592.0"/><text class="t-t" x="410" y="1590.0" text-anchor="middle">Entries final?</text><text class="t-s" x="410" y="1608.0" text-anchor="middle">ENTRY = F</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1674" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1700" text-anchor="middle">Transfer Journal Entries to GL</text><text class="t-s" x="410" y="1720" text-anchor="middle">GL_INTERFACE</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1772" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1798" text-anchor="middle">Import Journals</text><text class="t-s" x="410" y="1818" text-anchor="middle">GL_JE_BATCHES · STATUS = U</text></g>
+<g class="p5 proc"><rect class="bx" x="260.0" y="1870" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1896" text-anchor="middle">Post Journals</text><text class="t-s" x="410" y="1916" text-anchor="middle">GL_BALANCES · STATUS = P</text></g>
+<g class="term"><rect class="bx" x="260.0" y="1968" width="300" height="50" rx="25"/><text class="t-t" x="410" y="1999" text-anchor="middle">End: the purchase is in the books</text></g>
+<rect x="24" y="2046" width="36" height="18" rx="9" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="68" y="2059">Start or end</text>
+<rect x="170" y="2046" width="36" height="18" rx="4" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="214" y="2059">Step</text>
+<polygon points="278,2045 296,2055 278,2065 260,2055" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="304" y="2059">Decision</text>
+<line x1="392" y1="2055" x2="428" y2="2055" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="5 3"/><text class="t-l" x="436" y="2059">Failure, fix, then retry</text>
+<text class="t-l" x="600" y="2059">Grey text: the table or status that proves the step</text>
+</svg>

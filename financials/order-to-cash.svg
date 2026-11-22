@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1872" width="900" height="1872" role="img" aria-label="Order to Cash flowchart">
+<title>Order to Cash</title><desc>A customer order from entry to cash in the bank and a posted GL journal. Read top to bottom.</desc>
+<style>
+.bg{fill:#ffffff}
+.p1{--c:#1d6f8e;--cb:#e5f1f6}.p2{--c:#1f7a52;--cb:#e3f3ea}.p3{--c:#a8660b;--cb:#fbf0dc}.p4{--c:#6a4cc0;--cb:#eee9fa}.p5{--c:#b23a52;--cb:#fbe9ed}
+.band{fill:var(--cb);fill-opacity:.4;stroke:var(--c);stroke-opacity:.55;stroke-width:1.2;stroke-dasharray:7 5}
+.proc .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.7}
+.dec .bx{fill:#ffffff;stroke:var(--c);stroke-width:1.7}
+.term .bx{fill:#e9edf2;stroke:#33414f;stroke-width:1.7}
+.fail .bx{fill:#fdecea;stroke:#c0392b;stroke-width:1.5;stroke-dasharray:5 4}
+.alt .bx{fill:var(--cb);stroke:var(--c);stroke-width:1.5;stroke-dasharray:5 4}
+.ln{fill:none;stroke:#55646f;stroke-width:1.8}
+.lnf{fill:none;stroke:#c0392b;stroke-width:1.6;stroke-dasharray:6 4}
+.mk{fill:#55646f}.mkf{fill:#c0392b}
+.t-h{font:700 22px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-hs{font:400 12.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-t{font:600 14px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#121c27}
+.t-s{font:500 11px Consolas,'Courier New',monospace;fill:#5d6b79}
+.t-yn{font:600 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+.t-yn.no{fill:#c0392b}
+.t-ph{font:700 12px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:var(--c);letter-spacing:.06em}
+.t-phs{font:500 11px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#5d6b79}
+.t-l{font:500 11.5px 'Segoe UI','Helvetica Neue',Arial,sans-serif;fill:#33414f}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mk" points="0,0 10,5 0,10"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mkf" points="0,0 10,5 0,10"/></marker></defs>
+<rect class="bg" width="900" height="1872"/>
+<text class="t-h" x="24" y="40">Order to Cash</text>
+<text class="t-hs" x="24" y="62">A customer order from entry to cash in the bank and a posted GL journal. Read top to bottom.</text>
+<g class="p1"><rect class="band" x="8" y="82" width="884" height="500" rx="14"/><text class="t-ph" x="24" y="106">ORDER + SHIPPING</text><text class="t-phs" x="24" y="122">order to shipment</text></g>
+<g class="p2"><rect class="band" x="8" y="590" width="884" height="414" rx="14"/><text class="t-ph" x="24" y="614">BILLING</text><text class="t-phs" x="24" y="630">Receivables invoice</text></g>
+<g class="p3"><rect class="band" x="8" y="1012" width="884" height="414" rx="14"/><text class="t-ph" x="24" y="1036">RECEIPTS</text><text class="t-phs" x="24" y="1052">collect the cash</text></g>
+<g class="p4"><rect class="band" x="8" y="1434" width="884" height="372" rx="14"/><text class="t-ph" x="24" y="1458">GENERAL LEDGER</text><text class="t-phs" x="24" y="1474">journals and balances</text></g>
+<line class="ln" x1="410" y1="146" x2="410" y2="180" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="244" x2="410" y2="278" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="372" x2="410" y2="406" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="387">Yes</text>
+<line class="ln" x1="410" y1="470" x2="410" y2="504" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="568" x2="410" y2="602" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="666" x2="410" y2="700" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="794" x2="410" y2="828" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="809">Yes</text>
+<line class="ln" x1="410" y1="892" x2="410" y2="926" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="990" x2="410" y2="1024" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1088" x2="410" y2="1122" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1186" x2="410" y2="1220" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1314" x2="410" y2="1348" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1329">Yes</text>
+<line class="ln" x1="410" y1="1412" x2="410" y2="1446" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1510" x2="410" y2="1544" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1608" x2="410" y2="1642" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1706" x2="410" y2="1740" marker-end="url(#ar)"/>
+<line class="lnf" x1="560" y1="326.0" x2="638" y2="326.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="318.0" text-anchor="middle">No</text>
+<g class="fail p1"><rect class="bx" x="640" y="295.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="321.0" text-anchor="middle">Order on hold</text><text class="t-s" x="758.0" y="341.0" text-anchor="middle">fix and resubmit</text></g>
+<path class="lnf" d="M 758.0 295.0 V 213.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="748.0" x2="638" y2="748.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="740.0" text-anchor="middle">No</text>
+<g class="fail p2"><rect class="bx" x="640" y="717.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="743.0" text-anchor="middle">Rows rejected</text><text class="t-s" x="758.0" y="763.0" text-anchor="middle">RA_INTERFACE_ERRORS_ALL</text></g>
+<path class="lnf" d="M 758.0 717.0 V 635.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="1268.0" x2="638" y2="1268.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="1260.0" text-anchor="middle">No</text>
+<g class="fail p3"><rect class="bx" x="640" y="1237.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="1263.0" text-anchor="middle">Part paid</text><text class="t-s" x="758.0" y="1283.0" text-anchor="middle">apply more cash or follow up</text></g>
+<path class="lnf" d="M 758.0 1237.0 V 1155.0 H 562.0" marker-end="url(#arf)"/>
+<g class="term"><rect class="bx" x="260.0" y="96" width="300" height="50" rx="25"/><text class="t-t" x="410" y="127" text-anchor="middle">Start: a customer orders goods worth 1,500</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="182" width="300" height="62" rx="8"/><text class="t-t" x="410" y="208" text-anchor="middle">Sales order entered and submitted</text><text class="t-s" x="410" y="228" text-anchor="middle">DOO_HEADERS_ALL · DOO_LINES_ALL</text></g>
+<g class="p1 dec"><polygon class="bx" points="410,280 560,326.0 410,372 260,326.0"/><text class="t-t" x="410" y="331.0" text-anchor="middle">Order accepted?</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="408" width="300" height="62" rx="8"/><text class="t-t" x="410" y="434" text-anchor="middle">Pick, pack and ship</text><text class="t-s" x="410" y="454" text-anchor="middle">WSH_NEW_DELIVERIES · ship confirmed</text></g>
+<g class="p1 proc"><rect class="bx" x="260.0" y="506" width="300" height="62" rx="8"/><text class="t-t" x="410" y="532" text-anchor="middle">Create Accounting: shipment cost</text><text class="t-s" x="410" y="552" text-anchor="middle">Dr Cost of goods sold / Cr Inventory</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="604" width="300" height="62" rx="8"/><text class="t-t" x="410" y="630" text-anchor="middle">Import AutoInvoice</text><text class="t-s" x="410" y="650" text-anchor="middle">RA_INTERFACE_LINES_ALL</text></g>
+<g class="p2 dec"><polygon class="bx" points="410,702 560,748.0 410,794 260,748.0"/><text class="t-t" x="410" y="753.0" text-anchor="middle">AutoInvoice accepted?</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="830" width="300" height="62" rx="8"/><text class="t-t" x="410" y="856" text-anchor="middle">Receivables invoice created</text><text class="t-s" x="410" y="876" text-anchor="middle">RA_CUSTOMER_TRX_ALL · COMPLETE_FLAG = Y</text></g>
+<g class="p2 proc"><rect class="bx" x="260.0" y="928" width="300" height="62" rx="8"/><text class="t-t" x="410" y="954" text-anchor="middle">Create Accounting: invoice</text><text class="t-s" x="410" y="974" text-anchor="middle">Dr Receivables 1,500 / Cr Revenue 1,500</text></g>
+<g class="p3 proc"><rect class="bx" x="260.0" y="1026" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1052" text-anchor="middle">Customer pays: receipt created</text><text class="t-s" x="410" y="1072" text-anchor="middle">AR_CASH_RECEIPTS_ALL</text></g>
+<g class="p3 proc"><rect class="bx" x="260.0" y="1124" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1150" text-anchor="middle">Receipt applied to the invoice</text><text class="t-s" x="410" y="1170" text-anchor="middle">AR_RECEIVABLE_APPLICATIONS_ALL</text></g>
+<g class="p3 dec"><polygon class="bx" points="410,1222 560,1268.0 410,1314 260,1268.0"/><text class="t-t" x="410" y="1266.0" text-anchor="middle">Invoice fully paid?</text><text class="t-s" x="410" y="1284.0" text-anchor="middle">AR_PAYMENT_SCHEDULES_ALL: CL</text></g>
+<g class="p3 proc"><rect class="bx" x="260.0" y="1350" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1376" text-anchor="middle">Create Accounting: receipt</text><text class="t-s" x="410" y="1396" text-anchor="middle">Dr Cash 1,500 / Cr Receivables 1,500</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="1448" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1474" text-anchor="middle">Transfer Journal Entries to GL</text><text class="t-s" x="410" y="1494" text-anchor="middle">GL_INTERFACE</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="1546" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1572" text-anchor="middle">Import Journals</text><text class="t-s" x="410" y="1592" text-anchor="middle">GL_JE_BATCHES · STATUS = U</text></g>
+<g class="p4 proc"><rect class="bx" x="260.0" y="1644" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1670" text-anchor="middle">Post Journals</text><text class="t-s" x="410" y="1690" text-anchor="middle">GL_BALANCES · STATUS = P</text></g>
+<g class="term"><rect class="bx" x="260.0" y="1742" width="300" height="50" rx="25"/><text class="t-t" x="410" y="1773" text-anchor="middle">End: the sale and the cash are in the books</text></g>
+<rect x="24" y="1820" width="36" height="18" rx="9" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="68" y="1833">Start or end</text>
+<rect x="170" y="1820" width="36" height="18" rx="4" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="214" y="1833">Step</text>
+<polygon points="278,1819 296,1829 278,1839 260,1829" fill="none" stroke="#33414f" stroke-width="1.6"/><text class="t-l" x="304" y="1833">Decision</text>
+<line x1="392" y1="1829" x2="428" y2="1829" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="5 3"/><text class="t-l" x="436" y="1833">Failure, fix, then retry</text>
+<text class="t-l" x="600" y="1833">Grey text: the table or status that proves the step</text>
+</svg>
