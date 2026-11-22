@@ -1,0 +1,173 @@
+<title>Expense to GL Flowchart</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+  /* Layout: one top-to-bottom flowchart, phases as faint bands, failure loops on the right. */
+  :root {
+    --bg:#f5f7fa; --surface:#fff; --ink:#121c27; --ink-2:#33414f; --muted:#5d6b79; --line:#d5dce4; --arrow:#55646f;
+    --c1:#1d6f8e; --c1b:#e5f1f6; --c2:#1f7a52; --c2b:#e3f3ea; --c3:#a8660b; --c3b:#fbf0dc; --c4:#6a4cc0; --c4b:#eee9fa; --c5:#b23a52; --c5b:#fbe9ed;
+    --fail:#c0392b; --failb:#fdecea; --termb:#e9edf2;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#0e1319; --surface:#151c24; --ink:#e8eef4; --ink-2:#c2ccd6; --muted:#8e9ba8; --line:#28333f; --arrow:#8e9ba8;
+      --c1:#52b8d8; --c1b:#10303c; --c2:#5fcf98; --c2b:#11301f; --c3:#e8b04d; --c3b:#33250c; --c4:#a891f0; --c4b:#251d44; --c5:#f08aa0; --c5b:#3a1823;
+      --fail:#ff8a7a; --failb:#3a1a17; --termb:#1d2631; color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#0e1319; --surface:#151c24; --ink:#e8eef4; --ink-2:#c2ccd6; --muted:#8e9ba8; --line:#28333f; --arrow:#8e9ba8;
+    --c1:#52b8d8; --c1b:#10303c; --c2:#5fcf98; --c2b:#11301f; --c3:#e8b04d; --c3b:#33250c; --c4:#a891f0; --c4b:#251d44; --c5:#f08aa0; --c5b:#3a1823;
+    --fail:#ff8a7a; --failb:#3a1a17; --termb:#1d2631; color-scheme:dark;
+  }
+  body { background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.55;
+    padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); padding-block:28px 48px; }
+  main { max-width:960px; margin:0 auto; }
+  h1 { font-size:1.6rem; font-weight:700; letter-spacing:-.02em; margin:0 0 6px; }
+  .lede { color:var(--ink-2); margin:0 0 18px; max-width:70ch; }
+  .legend { display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center; font-size:.82rem; color:var(--ink-2); margin-bottom:16px; }
+  .legend span { display:inline-flex; align-items:center; gap:8px; }
+  .legend svg { width:40px; height:24px; min-width:0; }
+  figure { margin:0 0 24px; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .scroll { overflow-x:auto; }
+  figure svg { display:block; width:100%; min-width:820px; height:auto; }
+  figcaption { margin-top:10px; font-size:.9rem; color:var(--ink-2); max-width:78ch; }
+  .foot { color:var(--muted); font-size:.78rem; max-width:80ch; }
+
+  .ph1 { --c:var(--c1); --cb:var(--c1b); } .ph2 { --c:var(--c2); --cb:var(--c2b); }
+  .ph3 { --c:var(--c3); --cb:var(--c3b); } .ph4 { --c:var(--c4); --cb:var(--c4b); } .ph5 { --c:var(--c5); --cb:var(--c5b); }
+  .band { fill:var(--cb); fill-opacity:.35; stroke:var(--c); stroke-opacity:.5; stroke-width:1.2; stroke-dasharray:7 5; }
+  .proc .bx, .dec .bx { fill:var(--cb); stroke:var(--c); stroke-width:1.7; }
+  .dec .bx { fill:var(--surface); }
+  .term .bx { fill:var(--termb); stroke:var(--ink-2); stroke-width:1.7; }
+  .fail .bx { fill:var(--failb); stroke:var(--fail); stroke-width:1.5; stroke-dasharray:5 4; }
+  .alt .bx { fill:var(--cb); stroke:var(--c); stroke-width:1.5; stroke-dasharray:5 4; }
+  .ln { fill:none; stroke:var(--arrow); stroke-width:1.8; }
+  .lnf { fill:none; stroke:var(--fail); stroke-width:1.6; stroke-dasharray:6 4; }
+  .mk { fill:var(--arrow); } .mkf { fill:var(--fail); }
+  .t-t { font:600 14px var(--sans); fill:var(--ink); }
+  .t-s { font:500 11px var(--mono); fill:var(--muted); }
+  .t-yn { font:600 12px var(--sans); fill:var(--ink-2); } .t-yn.no { fill:var(--fail); }
+  .t-ph { font:700 12px var(--sans); fill:var(--c); letter-spacing:.06em; text-transform:uppercase; }
+  .t-phs { font:500 11px var(--sans); fill:var(--muted); }
+  details { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px 18px; margin-bottom:18px; }
+  summary { cursor:pointer; font-weight:600; font-size:.95rem; }
+  .tw { overflow-x:auto; margin-top:10px; }
+  table { border-collapse:collapse; width:100%; font-size:.82rem; min-width:620px; }
+  th,td { text-align:left; padding:7px 10px; border-top:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; border-top:0; }
+  td code { font-family:var(--mono); font-size:.76rem; color:var(--ink-2); }
+</style>
+<main>
+  <h1>Expense to GL Flowchart</h1>
+  <p class="lede">The full path of one expense claim in Oracle Fusion, read top to bottom. Follow the solid line. A "No" at any diamond sends you down the dashed red path until the cause is fixed.</p>
+  <div class="legend" aria-label="Legend">
+    <span><svg viewBox="0 0 40 24"><rect x="2" y="3" width="36" height="18" rx="9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Start or end</span>
+    <span><svg viewBox="0 0 40 24"><rect x="2" y="3" width="36" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Step</span>
+    <span><svg viewBox="0 0 40 24"><polygon points="20,1 38,12 20,23 2,12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Decision</span>
+    <span><svg viewBox="0 0 40 24"><line x1="2" y1="12" x2="38" y2="12" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="5 3"/></svg>Failure and retry</span>
+    <span>Grey text in a step: the table or status that proves it happened</span>
+  </div>
+  <figure>
+    <div class="scroll">
+<svg viewBox="0 0 900 2324" role="img" aria-label="Top-to-bottom flowchart from a new employee and an expense claim to a posted GL journal, with decision points and failure loops">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mk" points="0,0 10,5 0,10"/></marker><marker id="arf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><polygon class="mkf" points="0,0 10,5 0,10"/></marker></defs>
+<g class="ph1"><rect class="band" x="8" y="10" width="884" height="274" rx="14"/><text class="t-ph" x="24" y="34">Setup</text><text class="t-phs" x="24" y="50">once per employee</text></g>
+<g class="ph2"><rect class="band" x="8" y="292" width="884" height="640" rx="14"/><text class="t-ph" x="24" y="316">Expenses</text><text class="t-phs" x="24" y="332">claim and approval</text></g>
+<g class="ph3"><rect class="band" x="8" y="940" width="884" height="444" rx="14"/><text class="t-ph" x="24" y="964">Payables</text><text class="t-phs" x="24" y="980">bill and validation</text></g>
+<g class="ph4"><rect class="band" x="8" y="1392" width="884" height="414" rx="14"/><text class="t-ph" x="24" y="1416">Payments + SLA</text><text class="t-phs" x="24" y="1432">pay and account</text></g>
+<g class="ph5"><rect class="band" x="8" y="1814" width="884" height="500" rx="14"/><text class="t-ph" x="24" y="1838">General Ledger</text><text class="t-phs" x="24" y="1854">journals and balances</text></g>
+<line class="ln" x1="410" y1="74" x2="410" y2="108" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="172" x2="410" y2="206" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="270" x2="410" y2="304" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="368" x2="410" y2="402" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="466" x2="410" y2="500" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="594" x2="410" y2="628" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="609">Yes</text>
+<line class="ln" x1="410" y1="722" x2="410" y2="756" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="737">Yes</text>
+<line class="ln" x1="410" y1="820" x2="410" y2="854" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="918" x2="410" y2="952" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1046" x2="410" y2="1080" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1061">Yes</text>
+<line class="ln" x1="410" y1="1144" x2="410" y2="1178" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1242" x2="410" y2="1276" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1370" x2="410" y2="1404" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1385">Yes</text>
+<line class="ln" x1="410" y1="1468" x2="410" y2="1502" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1566" x2="410" y2="1600" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1664" x2="410" y2="1698" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1792" x2="410" y2="1826" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="1807">Yes</text>
+<line class="ln" x1="410" y1="1890" x2="410" y2="1924" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="1988" x2="410" y2="2022" marker-end="url(#ar)"/>
+<line class="ln" x1="410" y1="2116" x2="410" y2="2150" marker-end="url(#ar)"/>
+<text class="t-yn" x="420" y="2131">Yes</text>
+<line class="ln" x1="410" y1="2214" x2="410" y2="2248" marker-end="url(#ar)"/>
+<line class="lnf" x1="560" y1="548.0" x2="638" y2="548.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="540.0" text-anchor="middle">No</text>
+<g class="fail ph2"><rect class="bx" x="640" y="517.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="543.0" text-anchor="middle">Returned to employee</text><text class="t-s" x="758.0" y="563.0" text-anchor="middle">edit and resubmit</text></g>
+<path class="lnf" d="M 758.0 517.0 V 337.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="676.0" x2="638" y2="676.0" marker-end="url(#arf)"/>
+<text class="t-yn" x="600.0" y="668.0" text-anchor="middle">Yes</text>
+<g class="alt ph2"><rect class="bx" x="640" y="645.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="671.0" text-anchor="middle">Auditor reviews</text><text class="t-s" x="758.0" y="691.0" text-anchor="middle">approves, or returns it</text></g>
+<path class="ln" d="M 758.0 707.0 V 789.0 H 562.0" marker-end="url(#ar)"/>
+<line class="lnf" x1="560" y1="1000.0" x2="638" y2="1000.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="992.0" text-anchor="middle">No</text>
+<g class="fail ph3"><rect class="bx" x="640" y="969.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="995.0" text-anchor="middle">Rows rejected</text><text class="t-s" x="758.0" y="1015.0" text-anchor="middle">AP_INTERFACE_REJECTIONS</text></g>
+<path class="lnf" d="M 758.0 969.0 V 887.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="1324.0" x2="638" y2="1324.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="1316.0" text-anchor="middle">No</text>
+<g class="fail ph3"><rect class="bx" x="640" y="1293.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="1319.0" text-anchor="middle">Hold placed</text><text class="t-s" x="758.0" y="1339.0" text-anchor="middle">AP_HOLDS_ALL: fix, revalidate</text></g>
+<path class="lnf" d="M 758.0 1293.0 V 1211.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="1746.0" x2="638" y2="1746.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="1738.0" text-anchor="middle">No</text>
+<g class="fail ph4"><rect class="bx" x="640" y="1715.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="1741.0" text-anchor="middle">Event in error</text><text class="t-s" x="758.0" y="1761.0" text-anchor="middle">fix account or period, rerun</text></g>
+<path class="lnf" d="M 758.0 1715.0 V 1633.0 H 562.0" marker-end="url(#arf)"/>
+<line class="lnf" x1="560" y1="2070.0" x2="638" y2="2070.0" marker-end="url(#arf)"/>
+<text class="t-yn no" x="600.0" y="2062.0" text-anchor="middle">No</text>
+<g class="fail ph5"><rect class="bx" x="640" y="2039.0" width="236" height="62" rx="8"/><text class="t-t" x="758.0" y="2065.0" text-anchor="middle">Journal waits</text><text class="t-s" x="758.0" y="2085.0" text-anchor="middle">open period or approve: retry</text></g>
+<path class="lnf" d="M 758.0 2039.0 V 1957.0 H 562.0" marker-end="url(#arf)"/>
+<g class="term"><rect class="bx" x="260.0" y="24" width="300" height="50" rx="25"/><text class="t-t" x="410" y="55" text-anchor="middle">Start: employee has a 100 expense</text></g>
+<g class="ph1 proc"><rect class="bx" x="260.0" y="110" width="300" height="62" rx="8"/><text class="t-t" x="410" y="136" text-anchor="middle">HR hires the employee</text><text class="t-s" x="410" y="156" text-anchor="middle">Hire Employee · PER_ALL_PEOPLE_F</text></g>
+<g class="ph1 proc"><rect class="bx" x="260.0" y="208" width="300" height="62" rx="8"/><text class="t-t" x="410" y="234" text-anchor="middle">User account and roles created</text><text class="t-s" x="410" y="254" text-anchor="middle">PER_USERS · PER_USER_ROLES</text></g>
+<g class="ph2 proc"><rect class="bx" x="260.0" y="306" width="300" height="62" rx="8"/><text class="t-t" x="410" y="332" text-anchor="middle">Employee enters the expense report</text><text class="t-s" x="410" y="352" text-anchor="middle">EXM_EXPENSE_REPORTS · STATUS = SAVED</text></g>
+<g class="ph2 proc"><rect class="bx" x="260.0" y="404" width="300" height="62" rx="8"/><text class="t-t" x="410" y="430" text-anchor="middle">Employee submits for approval</text><text class="t-s" x="410" y="450" text-anchor="middle">STATUS = PENDING APPROVAL</text></g>
+<g class="ph2 dec"><polygon class="bx" points="410,502 560,548.0 410,594 260,548.0"/><text class="t-t" x="410" y="553.0" text-anchor="middle">Manager approves?</text></g>
+<g class="ph2 dec"><polygon class="bx" points="410,630 560,676.0 410,722 260,676.0"/><text class="t-t" x="410" y="674.0" text-anchor="middle">Audit needed?</text><text class="t-s" x="410" y="692.0" text-anchor="middle">receipt or policy flag</text></g>
+<g class="ph2 proc"><rect class="bx" x="260.0" y="758" width="300" height="62" rx="8"/><text class="t-t" x="410" y="784" text-anchor="middle">Report is approved</text><text class="t-s" x="410" y="804" text-anchor="middle">STATUS = APPROVED</text></g>
+<g class="ph2 proc"><rect class="bx" x="260.0" y="856" width="300" height="62" rx="8"/><text class="t-t" x="410" y="882" text-anchor="middle">Export Expense Reports</text><text class="t-s" x="410" y="902" text-anchor="middle">rows into AP_INVOICES_INTERFACE</text></g>
+<g class="ph3 dec"><polygon class="bx" points="410,954 560,1000.0 410,1046 260,1000.0"/><text class="t-t" x="410" y="1005.0" text-anchor="middle">Import accepted?</text></g>
+<g class="ph3 proc"><rect class="bx" x="260.0" y="1082" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1108" text-anchor="middle">AP invoice created</text><text class="t-s" x="410" y="1128" text-anchor="middle">AP_INVOICES_ALL · Import Payables Invoices</text></g>
+<g class="ph3 proc"><rect class="bx" x="260.0" y="1180" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1206" text-anchor="middle">Validate Payables Invoice</text><text class="t-s" x="410" y="1226" text-anchor="middle">MATCH_STATUS_FLAG</text></g>
+<g class="ph3 dec"><polygon class="bx" points="410,1278 560,1324.0 410,1370 260,1324.0"/><text class="t-t" x="410" y="1329.0" text-anchor="middle">No holds, flag = A?</text></g>
+<g class="ph4 proc"><rect class="bx" x="260.0" y="1406" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1432" text-anchor="middle">Create Accounting: invoice</text><text class="t-s" x="410" y="1452" text-anchor="middle">Dr Expense 100 / Cr Liability 100</text></g>
+<g class="ph4 proc"><rect class="bx" x="260.0" y="1504" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1530" text-anchor="middle">Payment Process Request</text><text class="t-s" x="410" y="1550" text-anchor="middle">IBY_PAYMENTS_ALL · ISSUED</text></g>
+<g class="ph4 proc"><rect class="bx" x="260.0" y="1602" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1628" text-anchor="middle">Create Accounting: payment</text><text class="t-s" x="410" y="1648" text-anchor="middle">Dr Liability 100 / Cr Cash 100</text></g>
+<g class="ph4 dec"><polygon class="bx" points="410,1700 560,1746.0 410,1792 260,1746.0"/><text class="t-t" x="410" y="1744.0" text-anchor="middle">Entries final?</text><text class="t-s" x="410" y="1762.0" text-anchor="middle">ENTRY = F</text></g>
+<g class="ph5 proc"><rect class="bx" x="260.0" y="1828" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1854" text-anchor="middle">Transfer Journal Entries to GL</text><text class="t-s" x="410" y="1874" text-anchor="middle">GL_INTERFACE</text></g>
+<g class="ph5 proc"><rect class="bx" x="260.0" y="1926" width="300" height="62" rx="8"/><text class="t-t" x="410" y="1952" text-anchor="middle">Import Journals</text><text class="t-s" x="410" y="1972" text-anchor="middle">GL_JE_BATCHES · STATUS = U</text></g>
+<g class="ph5 dec"><polygon class="bx" points="410,2024 560,2070.0 410,2116 260,2070.0"/><text class="t-t" x="410" y="2075.0" text-anchor="middle">Period open, journal approved?</text></g>
+<g class="ph5 proc"><rect class="bx" x="260.0" y="2152" width="300" height="62" rx="8"/><text class="t-t" x="410" y="2178" text-anchor="middle">Post Journals</text><text class="t-s" x="410" y="2198" text-anchor="middle">GL_BALANCES · STATUS = P</text></g>
+<g class="term"><rect class="bx" x="260.0" y="2250" width="300" height="50" rx="25"/><text class="t-t" x="410" y="2281" text-anchor="middle">End: the 100 is in the books</text></g>
+</svg>
+    </div>
+    <figcaption>Five phases (shaded bands) take the claim from a hired employee to a posted journal. Accounting runs twice, once for the invoice and once for the payment, so the liability appears and then clears.</figcaption>
+  </figure>
+  <details>
+    <summary>Every table, step by step</summary>
+    <div class="tw"><table>
+      <tr><th>Step</th><th>Fusion job</th><th>Tables</th></tr>
+      <tr><td>Hire, login, roles</td><td>Hire Employee, Autoprovisioning</td><td><code>PER_ALL_PEOPLE_F, PER_ALL_ASSIGNMENTS_M, PER_USERS, PER_USER_ROLES</code></td></tr>
+      <tr><td>Claim and approval</td><td>Expense report, approval workflow</td><td><code>EXM_EXPENSE_REPORTS, EXM_EXPENSES, EXM_EXPENSE_DISTS</code></td></tr>
+      <tr><td>Export to Payables</td><td>Export Expense Reports</td><td><code>AP_INVOICES_INTERFACE, AP_INVOICE_LINES_INTERFACE</code></td></tr>
+      <tr><td>Invoice and validation</td><td>Import Payables Invoices, Validate Payables Invoice</td><td><code>AP_INVOICES_ALL, AP_INVOICE_LINES_ALL, AP_INVOICE_DISTRIBUTIONS_ALL, AP_HOLDS_ALL</code></td></tr>
+      <tr><td>Payment</td><td>Payment Process Request</td><td><code>IBY_PAY_SERVICE_REQUESTS, IBY_PAYMENTS_ALL, AP_CHECKS_ALL</code></td></tr>
+      <tr><td>Accounting</td><td>Create Accounting</td><td><code>XLA_EVENTS, XLA_AE_HEADERS, XLA_AE_LINES</code></td></tr>
+      <tr><td>Ledger</td><td>Transfer to GL, Import Journals, Post Journals</td><td><code>GL_INTERFACE, GL_JE_BATCHES, GL_JE_HEADERS, GL_JE_LINES, GL_BALANCES</code></td></tr>
+    </table></div>
+  </details>
+  <p class="foot">Job names, table names, column names and status codes are written from working knowledge of Oracle Fusion and were not checked against Oracle's documentation. The expense export job name in particular can differ by release. Verify before using them in queries.</p>
+</main>
