@@ -9,9 +9,14 @@ The first flow is **Expense to GL**: what happens from the moment an employee ha
 | File | What it is |
 |---|---|
 | `README.md` | This page. The flow below is drawn right here, so you can read it on GitHub without opening anything. |
-| `flowcharts/expense-to-gl-flowchart.html` | The same flow as a nicer, colored flowchart. Download it and double-click to open in your browser. |
+| `flowcharts/expense-to-gl-flowchart.png` | The colored flowchart as a picture. GitHub shows it directly in the README. |
+| `flowcharts/expense-to-gl-flowchart.html` | The same colored flowchart as a web page. GitHub only shows its code, so download it and double-click to open it in your browser. |
 
 ## The flow in one picture
+
+![Expense to GL flowchart](flowcharts/expense-to-gl-flowchart.png)
+
+The picture above is the colored version. The same flow is drawn again below in text form, so you can read or copy it.
 
 Read it top to bottom. A diamond is a yes or no question. A "No" sends you to a fix, then back to retry the step.
 
