@@ -1,99 +1,46 @@
 # Oracle Fusion Flows
 
-My study notes for how data moves through Oracle Fusion Cloud, drawn as flowcharts.
+Study notes that explain how data moves through Oracle Fusion Cloud, one flowchart per topic.
 
-The first flow is **Expense to GL**: what happens from the moment an employee has an expense to the moment it is posted in the General Ledger. It is meant for someone learning Fusion Financials (functional side) who wants to see what really happens behind the screens, step by step, with the tables and statuses involved.
+I made this to learn Fusion Financials from the functional side. Each page follows one real business situation from the first step to the final entry in the General Ledger, and shows the Fusion job, the tables and the status that mark each step.
 
-## What is in this repo
+## Pick a flow
 
-| File | What it is |
-|---|---|
-| `README.md` | This page. The flow below is drawn right here, so you can read it on GitHub without opening anything. |
-| `flowcharts/expense-to-gl-flowchart.png` | The colored flowchart as a picture. GitHub shows it directly in the README. |
-| `flowcharts/expense-to-gl-flowchart.html` | The same colored flowchart as a web page. GitHub only shows its code, so download it and double-click to open it in your browser. |
+Click a name to open it. The flowchart is drawn right on the page.
 
-## The flow in one picture
+| Flow | What it follows | Modules involved |
+|---|---|---|
+| [Expense to GL](financials/expense-to-gl.md) | An employee claims an expense and gets paid | HCM, Expenses, Payables, Payments, SLA, GL |
+| [Procure to Pay](financials/procure-to-pay.md) | The company orders goods, receives them and pays the supplier | Purchasing, Receiving, Payables, Payments, SLA, GL |
+| [Order to Cash](financials/order-to-cash.md) | A customer orders, the company ships, bills and collects | Order Management, Shipping, Receivables, SLA, GL |
+| [Fixed Assets to GL](financials/fixed-assets-to-gl.md) | The company buys an asset and depreciates it | Payables, Fixed Assets, SLA, GL |
 
-![Expense to GL flowchart](flowcharts/expense-to-gl-flowchart.png)
+## How to read a flow page
 
-The picture above is the colored version. The same flow is drawn again below in text form, so you can read or copy it.
+Every page has the same parts, in the same order:
 
-Read it top to bottom. A diamond is a yes or no question. A "No" sends you to a fix, then back to retry the step.
+1. **A short intro:** what the flow covers, the modules involved, and the example amount used.
+2. **A flowchart:** read it top to bottom. A diamond is a yes or no question, and a "No" leads to a fix and then a retry.
+3. **A steps table:** for each step, what happens, the Fusion job, the main tables, and what shows the step is done.
+4. **The accounting entries:** the debits and credits created along the way.
+5. **Where it usually gets stuck:** the common reasons a flow stops, and where to look.
 
-```mermaid
-flowchart TD
-    A(["Start: employee has a 100 expense"]) --> B["HR hires the employee"]
-    B --> C["User account and roles created"]
-    C --> D["Employee enters the expense report"]
-    D --> E["Employee submits for approval"]
-    E --> F{"Manager approves?"}
-    F -- No --> F1["Returned to employee"] --> D
-    F -- Yes --> G{"Audit needed?"}
-    G -- Yes --> G1["Auditor reviews"] --> H
-    G -- No --> H["Report is approved"]
-    H --> I["Export Expense Reports"]
-    I --> J{"Import accepted?"}
-    J -- No --> J1["Rows rejected: fix and rerun"] --> I
-    J -- Yes --> K["AP invoice created"]
-    K --> L["Validate Payables Invoice"]
-    L --> M{"No holds?"}
-    M -- No --> M1["Hold placed: fix and revalidate"] --> L
-    M -- Yes --> N["Create Accounting: invoice"]
-    N --> O["Payment Process Request"]
-    O --> P["Create Accounting: payment"]
-    P --> Q{"Entries final?"}
-    Q -- No --> Q1["Event in error: fix and rerun"] --> P
-    Q -- Yes --> R["Transfer Journal Entries to GL"]
-    R --> S["Import Journals"]
-    S --> T{"Period open and journal approved?"}
-    T -- No --> T1["Journal waits: retry"] --> S
-    T -- Yes --> U["Post Journals"]
-    U --> V(["End: the 100 is in the books"])
-```
+## The pattern behind every flow
 
-## The steps in plain English
+All of these flows end the same way. Each module creates its own transaction first (an invoice, a receipt, an asset). Then **Create Accounting** in Subledger Accounting (SLA) turns it into an accounting entry. Only after that does it move to the General Ledger: Transfer to GL, then Import Journals, then Post Journals.
 
-| # | What happens | Fusion job or screen | Main tables | Done when |
-|---|---|---|---|---|
-| 1 | HR hires the person | Hire Employee | `PER_ALL_PEOPLE_F`, `PER_ALL_ASSIGNMENTS_M` | Assignment is `ACTIVE` |
-| 2 | A login and roles are created | Autoprovisioning | `PER_USERS`, `PER_USER_ROLES` | `ACTIVE_FLAG = Y` |
-| 3 | The employee enters the expense report | Expenses | `EXM_EXPENSE_REPORTS`, `EXM_EXPENSES`, `EXM_EXPENSE_DISTS` | Status `SAVED` |
-| 4 | The employee submits it | Expenses | `EXM_EXPENSE_REPORTS` | Status `PENDING APPROVAL` |
-| 5 | The manager approves (and an auditor, if needed) | Approval workflow | `EXM_EXPENSE_REPORTS` | Status `APPROVED` |
-| 6 | The approved report is sent to Payables | Export Expense Reports | `AP_INVOICES_INTERFACE`, `AP_INVOICE_LINES_INTERFACE` | Rows land in the interface tables |
-| 7 | Payables turns those rows into a real invoice | Import Payables Invoices | `AP_INVOICES_ALL`, `AP_INVOICE_LINES_ALL`, `AP_INVOICE_DISTRIBUTIONS_ALL` | Interface status `PROCESSED` |
-| 8 | The invoice is checked | Validate Payables Invoice | `AP_INVOICES_ALL`, `AP_HOLDS_ALL` | `MATCH_STATUS_FLAG = A`, no holds |
-| 9 | The invoice is turned into an accounting entry | Create Accounting | `XLA_EVENTS`, `XLA_AE_HEADERS`, `XLA_AE_LINES` | Entry status `F` (final) |
-| 10 | The employee is paid | Payment Process Request | `IBY_PAYMENTS_ALL`, `AP_CHECKS_ALL` | Payment status `ISSUED` |
-| 11 | The payment is turned into an accounting entry | Create Accounting | `XLA_AE_HEADERS`, `XLA_AE_LINES` | Entry status `F` (final) |
-| 12 | Both entries are sent to the ledger | Transfer Journal Entries to GL | `GL_INTERFACE` | Transfer status `Y` |
-| 13 | Journals are created from them | Import Journals | `GL_JE_BATCHES`, `GL_JE_HEADERS`, `GL_JE_LINES` | Batch status `U` (unposted) |
-| 14 | Journals are posted and balances update | Post Journals | `GL_BALANCES` | Batch status `P` (posted) |
-
-## Why accounting runs twice
-
-Create Accounting runs once for the invoice and once for the payment.
-
-- Invoice: debit Expense 100, credit Payables liability 100. The company now owes the employee.
-- Payment: debit Payables liability 100, credit Cash 100. The debt is paid.
-
-After both, the liability is back to zero. Only the expense and the cash movement stay in the books.
-
-## Where things usually get stuck
-
-- **Report never reaches Payables:** it is not `APPROVED` yet, or the employee is not set up as a supplier.
-- **Invoice cannot be paid:** `MATCH_STATUS_FLAG` is not `A`, or there is an open hold in `AP_HOLDS_ALL`.
-- **Nothing in the ledger:** the accounting event is in error, or `GL_TRANSFER_STATUS_CODE` is still `N`. Look for an invalid account or a closed period.
-- **Journal not posted:** the period is closed, or the journal is waiting for approval.
+So when a transaction is missing from the ledger, the first question is always the same: did Create Accounting run, and did it finish with a final entry?
 
 ## How accurate is this?
 
-I wrote the job names, table names, column names and status codes from my own working knowledge of Oracle Fusion. I have **not** checked them against Oracle's documentation or a real Fusion environment. The export job name (step 6) is the one I am least sure about, because names can change between releases.
+I wrote the job names, table names, column names and status codes from my own working knowledge of Oracle Fusion. I have **not** checked them against Oracle's documentation or a real Fusion environment, and names can change between releases. Each page says which steps I am least sure about.
 
-Before relying on any name, check it in Oracle's *Tables and Views for Financials* guide or in your own environment, and fix it here if it is different.
+Before relying on any name, check it in Oracle's *Tables and Views for Financials* guide or in your own environment, and correct it here if it is different.
 
-## Ideas for next flows
+## Adding a new flow
 
-- Receivables: customer invoice to receipt to GL
-- Procure to Pay: requisition to purchase order to receipt to invoice
-- Fixed Assets: asset addition to depreciation to GL
+Copy any page in `financials/`, keep the same five parts, and add a row to the table above. Ideas for next:
+
+- Cash Management: bank statement to reconciliation
+- Hire to Retire: payroll costing to GL
+- Projects: project cost to billing
